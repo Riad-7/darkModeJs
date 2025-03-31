@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>darkMode</title>
+  </head>
+  <body>
+    <!-- css part -->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: system-ui;
+        }
+        body {
+            max-width: 700px;
+            margin: auto;
+        }
+        header {
+            width: 100%;
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav ul {
+            display: flex;
+        }
+        a {
+          text-decoration: none;
+          color: black;
+        }
+        nav ul li {
+            list-style: none;
+            margin-left: 25px;
+        }
+        section {
+            margin-top: 30px;
+        }
+        .body-title {
+            margin-bottom: 30px;
+        }
+        .btn {
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px; 
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.5s;
+            background:#72a4ff;
+        }
+        .btn:hover {
+            transform: scale(1.1);
+            background: #4c8bff;
+        }
+    </style>
+
+    <!-- html part -->
+    <header>
+      <h1 class="nav-title text">LOGO</h1>
+      <nav class="navbar">
+        <ul>
+          <li><a href="#" class="text">Home</a></li>
+          <li><a href="#" class="text">Products</a></li>
+          <li><a href="#" class="text">Services</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section>
+      <h2 class="body-title text">
+        Dark Mode OFF
+      </h2>
+      <button class="btn" onclick="switchDarkMode()">
+         <p class="text">switch dark mode</p>
+      </button>
+    </section>
+    <!-- js part -->
+    <script>
+        // initialize Constants !
+        const btn = document.querySelector('.btn');
+        const text = document.querySelectorAll('.text');
+        const background = document.querySelector('body');
+        let title = document.querySelector('.body-title');
+
+        // darkMode logic !
+        let darkMode = false
+        function switchDarkMode(){
+            if (darkMode == false){
+                darkMode = true
+
+                background.style.backgroundColor = "#2e2b2b";
+                background.style.transition = '0.5s';
+                btn.style.background = "#72a4ff";
+                title.textContent = 'Dark Mode ON';
+                title.style.transition = '1s';
+
+                for(let i = 0; i < text.length; i++){
+                  text[i].style.color = "white";
+                  text[i].style.transition = '0.5s';
+                }
+            }else {
+                darkMode = false
+
+                background.style.backgroundColor = "White";
+                background.style.transition = '0.5s';
+                title.textContent = 'Dark Mode OFF';
+                title.style.transition = '0.5s';
+
+
+                for(let i = 0; i < text.length; i++){
+                  text[i].style.color = "black";
+                  text[i].style.transition = '0.5s';
+                }
+            }
+            // check if darkMode works of not !
+            console.log(darkMode);
+        }
+    </script>
+  </body>
+</html>
